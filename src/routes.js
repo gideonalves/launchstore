@@ -5,7 +5,7 @@ const routes = express.Router() // 01 routes sera responsavel por todas as rotas
 // Rotas
 routes.get('/', function(req, res) {  // 02
     // nessa rota oque muda é o "redirect"
-    return res.send("ok") 
+    return res.render("layout.njk") 
 })
 
 module.exports = routes
