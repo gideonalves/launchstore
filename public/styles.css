@@ -23,6 +23,12 @@ body {
     background-color: #f9f9f9;
 }
 
+.container {
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
 header, footer {
     background-color: black;
     color: white;
@@ -63,4 +69,27 @@ header div.container a {
     padding: 8px 16px;
     border-radius: 2px;
     font-size: 16px;
+}
+
+/* PRIMARY MENU */
+
+nav.primary ul {
+    display: flex;
+    justify-content: space-between; /*abre um espaço entre o novo anuncio e minha conta*/
+}
+
+nav.primary ul li a {
+    display: flex;
+    align-items: center;
+    color: white;
+    transition: 200ms;
+}
+
+
+nav.primary ul li a:hover {
+    color: var(--primary-color);
+}
+
+nav.primary ul li a i {
+    margin-right: 8px; /* espaçamento entro o icon */
 }
