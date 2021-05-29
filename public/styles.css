@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900@display=swap');
+
+:root {
+    --primary-color: #fd951f;
+    --secondary-color: #1fd4fd;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+html,body {
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+}
+
+header, footer {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 32px 0;
+    text-align: center;
+}
+
+header div.container {
+    display: grid;
+    grid-template-columns: 220px auto 280px;
+    align-items: center;
+    grid-gap: 24px;
+}
+
+header div.container a {
+    justify-self: start; /* pucha o launchstore para esquerda */
+}
+
+/* Logo */
+.logo h1 { /* Launchstore */
+    color: white;
+    font-size: 36px;
+    line-height: 46px;
+}
+
+.logo h2 {
+    color: var(--primary-color);
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 2px; /* espaçamento entre as letras compra e venda*/
+}
+
+/* SEARCH INPUT */
+
+.search input {
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 16px;
+}
