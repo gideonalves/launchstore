@@ -1,12 +1,20 @@
 const express = require('express')
 const routes = express.Router() // 01 routes sera responsavel por todas as rotas
-
+const ProductController = require('./app/controllers/ProductController')
 
 // Rotas
 routes.get('/', function(req, res) {  // 02
     // nessa rota oque muda é o "redirect"
     return res.render("layout.njk") 
 })
+
+routes.get('/ads/create', function(req, res) { 
+    return res.redirect("/products/create") 
+})
+
+routes.get('/products/create', ProductController.create)
+
+
 
 module.exports = routes
 
