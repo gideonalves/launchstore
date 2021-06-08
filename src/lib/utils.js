@@ -17,5 +17,14 @@ module.exports = {
             iso: `${year}-${month}-${day}`,
             birthDay: `${day}/${month}/${year}`
         }
-    }
+    },
+
+    formatPrice(price) {
+            // formato em real
+            return new Intl.NumberFormat('pt-BR', { // formato do brasil
+                style: 'currency', // 1 = 1.000
+                currency: 'BRL'    // R$
+            }).format(price/100)
+    }    
+
 }
