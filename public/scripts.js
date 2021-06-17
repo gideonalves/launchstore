@@ -137,6 +137,60 @@ const PhotosUpload = {
         PhotosUpload.input.files = PhotosUpload.getAllFiles()
 
         photoDiv.remove()
-    }
+    },
 
+    // clica na imagem e exclui
+    removeOldPhoto(event) {
+        const photoDiv = event.target.parentNode
+
+        if(photoDiv.id) {
+            const removedFiles = document.querySelector('input[name="removed_files"]')
+
+            if (removedFiles) {
+                removedFiles.value += `${photoDiv.id},`
+            }
+        }
+
+        photoDiv.remove()
+    }
+}
+
+
+// imagem 
+const ImageGallery = {
+    highlight: document.querySelector('.gallery .highlight > img'), // seleciona a imagem grande // 01
+    preview: document.querySelectorAll('.gallery-preview img'), // pega todas as imagem
+    setImage(e){
+        const { target } = e
+
+        //remove todas imagem active
+        ImageGallery.preview.forEach(preview => preview.classList.remove('active'))
+
+        // Seleciona todas imagem e ativa
+        target.classList.add('active') // as imagem pequena fica ativa ao clicar
+
+        // 01
+        ImageGallery.highlight.src = target.src
+        Lightbox.image.src = target.src
+    }
+}
+
+const Lightbox = {
+    target: document.querySelector('.lightbox-target'),
+    image: document.querySelector('.lightbox-target img'),
+    //abrir
+    closeButton: document.querySelector('.lightbox-target a.lightbox-close'),
+    open() {
+        Lightbox.target.style.opacity = 1
+        Lightbox.target.style.top = 0
+        Lightbox.target.style.bottom = 0
+        Lightbox.closeButton.style.top = 0
+    },
+    //fechar
+    close() {
+        Lightbox.target.style.opacity = 1
+        Lightbox.target.style.top = "-100%"
+        Lightbox.target.style.bottom = "initial"
+        Lightbox.closeButton.style.top = "-80px"
+    }
 }

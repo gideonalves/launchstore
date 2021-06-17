@@ -21,12 +21,18 @@ html,body {
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     width: 90%;
     max-width: 940px;
     margin: 0 auto;
+}
+
+.footer {
+    margin-top: auto;
 }
 
 .button {
@@ -317,5 +323,170 @@ form .item #photos-preview img {
 #photos-preview .photo:hover i {
     opacity: 1;
 }
+
+/* PRODUCT VIEW PAGINA SHOW */
+.product-single {
+    background-color: white;
+    display: grid; /* fica flexisivel deixa um do lado do outro */
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px; /* distancia um do outro */
+
+    padding: 32px 24px;
+    margin:  32px auto;
+
+    box-shadow:  2px 2px 2px 0px rgba(63, 63, 63, .5);
+
+    border:  1px solid #efefef;
+    border-radius: 4px;
+}
+
+/* product single gallery */
+.product-single .gallery {
+    width: 100%;
+}
+
+.product-single .highlight > img {
+    width: 100%;
+    height: 280px;
+
+    object-fit: none;
+    object-position: 50% 50%;
+    border: 1px solid #efefef;
+
+    cursor: zoom-in;
+}
+
+.product-single .gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+}
+
+.product-single .gallery-preview > img {
+    width: 100px;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.product-single .gallery-preview img:hover,
+.product-single .gallery-preview img.active {
+    opacity: 1;
+}
+
+/* LIGHTBOX PRODUCT GALLERY zoo*/
+.product-single .highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100; /* a imagem desaparece*/
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms; /*a imagem aparece de vagar*/
+}
+
+.product-single .highlight .lightbox-target img {
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+}
+
+/* configuração do botão close*/
+.product-single .highlight  a.lightbox-close {
+    width: 50px;
+    height: 50px;
+
+    background: white;
+
+    position: absolute;
+    top: -80px;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 400ms;
+}
+
+
+/* PRODUCT PAGINA INFO SHOW */
+.product-single .info {
+    display: grid;
+    grid-template-rows: auto 40px 2fr 1fr; /*linhas*/
+}
+
+.product-single .info h1 {
+    font-size: 32px;
+    line-height: 42px;
+    color: #333;
+    text-transform: uppercase; /* deixa o texto to maiusculo*/    
+}
+
+.product-single .info .published {
+    color: #888;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing:  0.4px;   
+}
+
+/* price-buy */
+.product-single .price-buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px;
+    border-top: 1px solid #eee;
+}
+
+.product-single .price-buy .price {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+}
+
+.product-single .price-buy .price .old {
+    text-decoration: line-through; /*Fica com um risco no meio do texto*/
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.product-single .price-buy .buy button {
+    background-color: var(--secondary-color);
+
+    font-size: 14px;
+    letter-spacing: .4px;
+}
+
 
 
