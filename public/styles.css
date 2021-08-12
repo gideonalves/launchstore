@@ -2,36 +2,40 @@
 
 :root {
     --primary-color: #fd951f;
-    --secondary-color: #1f83fd;
+    --secundary-color: #1f83fd;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* tira os anderline dos links*/
     text-decoration: none;
-    list-style: none;
+    /* tira as bolinhas do li */
+    list-style-type: none;
     border: none;
 }
-
+/* Ocupa a Altura da tela */
 html,body {
     min-height: 100vh;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
+
+    background-color: #e6e1e1;
+
     display: flex;
     flex-direction: column;
 }
-
+/* tamanho maximo do container */
 .container {
     width: 90%;
     max-width: 940px;
     margin: 0 auto;
 }
 
-.footer {
+footer {
     margin-top: auto;
 }
 
@@ -46,7 +50,7 @@ body {
     width: 100%;
     border-radius: 4px;
 
-    /* para colocar o botao para baixo */
+    /* para colcoar o botão para baixo */
     align-self: end;
 
     font-weight: bold;
@@ -64,7 +68,7 @@ body {
 }
 
 .button.edit {
-    background-color: var(--secondary-color);
+    background-color: var(--secundary-color);
 }
 
 .button.delete {
@@ -76,45 +80,48 @@ body {
 }
 
 .button.delete:hover {
-    background-color: rgb(223, 62, 62);
+    background-color: rgba(223, 62, 62);
 }
 
-/* HEADER */
+/* ===== HEADER e FOOTER ===== */
 header, footer {
     background-color: black;
     color: white;
+
     width: 100%;
     padding: 32px 0;
-    text-align: center;
+
+    text-align: center; /* alinha os texto no centro */
 }
 
+/* Container */
 header div.container {
     display: grid;
     grid-template-columns: 220px auto 280px;
     align-items: center;
     grid-gap: 24px;
 }
-
+/* Links */
 header div.container a {
-    justify-self: start; /* pucha o launchstore para esquerda */
+    justify-self: start;
 }
-
-/* Logo */
-.logo h1 { /* Launchstore */
+/* ===== LOGO ===== */
+/*Launcstore*/
+.logo h1 {
     color: white;
     font-size: 36px;
-    line-height: 46px;
+    line-height: 46px;    
 }
-
+/*compra e venda*/
 .logo h2 {
     color: var(--primary-color);
     font-size: 14px;
     line-height: 16px;
-    letter-spacing: 2px; /* espaçamento entre as letras compra e venda*/
+    letter-spacing: 2px; /*da espaço entre as letras*/
 }
 
-/* SEARCH INPUT */
-
+/* ===== HEADER SEARCH ===== */
+/* area de busca */
 .search input {
     width: 100%;
     padding: 8px 16px;
@@ -122,11 +129,11 @@ header div.container a {
     font-size: 16px;
 }
 
-/* PRIMARY MENU */
-
+/* ===== PRIMARY MENU ===== */
+/* novo anuncio e o minha conta */
 nav.primary ul {
     display: flex;
-    justify-content: space-between; /*abre um espaço entre o novo anuncio e minha conta*/
+    justify-content: space-between;
 }
 
 nav.primary ul li a {
@@ -136,27 +143,30 @@ nav.primary ul li a {
     transition: 200ms;
 }
 
-
 nav.primary ul li a:hover {
     color: var(--primary-color);
 }
 
+/* icones +novo anuncio e minha conta */
 nav.primary ul li a i {
-    margin-right: 8px; /* espaçamento entro o icon */
+    margin-right: 8px;
 }
 
 /* PRODUCTS FORM */
 section.form {
     background-color: white;
+
     padding: 32px 24px;
     margin: 32px auto;
     box-shadow: 2px 2px 2px -4px rgba(60, 60, 60, .9);
-    border: #efefef;
+    border: 1px solid  var(--primary-color);
     border-radius: 4px;
+
     max-width: 700px;
     width: 90%;
 }
 
+/* Cadastro Produto */
 section.form .header h3 {
     font-size: 14px;
     line-height: 24px;
@@ -164,10 +174,11 @@ section.form .header h3 {
     text-transform: uppercase;
 
     font-weight: bold;
-    color: var(--primary-color);
+    color:  var(--primary-color);
 
-    margin-bottom: 16px;
+    margin-top: 16px;
 }
+
 
 form .fields {
     margin-bottom: 64px;
@@ -177,7 +188,7 @@ form .item {
     margin-bottom: 16px;
 }
 
-/* pega as primeniras div categoria, nome, descrição, valor, quantidade */
+/* estiliza todas as primeiras div */
 form .item > div:nth-child(1) {
     color: #777;
     text-transform: uppercase;
@@ -201,6 +212,7 @@ form .item select {
 
     font-size: 16px;
 }
+
 
 form .item select {
     /* permitir estilização no select */
@@ -242,6 +254,7 @@ form .item span {
     font-size: 12px;
 }
 
+
 /* PHOTO UPLOAD */
 form .item #photos-upload {
     position: relative;
@@ -254,7 +267,7 @@ form .item #photos-upload p {
     padding: 8px 16px;
     border-radius: 4px;
     box-shadow: 0 2px 2px -6px #333;
-    background-color: var(--secondary-color);
+    background-color: var(--secundary-color);
     color: white;
 
     width: 100%;
@@ -290,12 +303,12 @@ form .item #photos-preview img {
     width: 100%;
     height: 150px;
 
-    object-fit: cover; /*não estica a imagem*/    
+    object-fit: cover; /*não estica a imagem */
 }
 
 #photos-preview .photo {
     position: relative;
-}
+} 
 /* icon X */
 #photos-preview .photo i {
     position: absolute;
@@ -318,11 +331,11 @@ form .item #photos-preview img {
     transition: opacity 200ms;
 
     opacity: 0;
-}
+} 
 
 #photos-preview .photo:hover i {
     opacity: 1;
-}
+}  
 
 /* PRODUCT VIEW PAGINA SHOW */
 .product-single {
@@ -379,6 +392,7 @@ form .item #photos-preview img {
 .product-single .gallery-preview img.active {
     opacity: 1;
 }
+
 
 /* LIGHTBOX PRODUCT GALLERY zoo*/
 .product-single .highlight .lightbox-target {
@@ -488,5 +502,49 @@ form .item #photos-preview img {
     letter-spacing: .4px;
 }
 
+/* === SHOP === */
+.shop h2 {
+    margin: 48px 0;
+}
 
+.shop .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
+    grid-gap: 32px;
+}
+
+.shop .product {
+    display: grid;
+}
+
+.shop .product .image {
+    padding-top: 56.25%;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.shop .items h4 {
+    margin: 8px 0;
+    font-weight: 300;
+    color: #999;
+}
+
+.shop .items p {
+    color: #101010;
+    font-weight: 300;
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+.shop .product .old-price {
+    padding: 0;
+    margin: 4px 0;
+
+    font-size: 14px;
+    color: #999;
+
+    text-decoration: line-through;
+}

@@ -1,7 +1,7 @@
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: (req, file, cb) => { // destino pra onde vai as imagens
         cb(null, './public/images')
     },
     filename: (req, file, cb) => {
@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
 })
 
 const fileFilter = (req, file, cb) => {
-    const isAccepted = ['image/png', 'image/jpg', 'image/jpg']
+    const isAccepted = ['image/png', 'image/jpg', 'image/jpeg']
     .find(AcceptedFormat => AcceptedFormat == file.mimetype)
 
     if(isAccepted) {

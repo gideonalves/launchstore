@@ -1,14 +1,12 @@
 const express = require('express')
-const routes = express.Router() // 01 routes sera responsavel por todas as rotas
+const routes = express.Router() 
 const multer = require('./app/middlewares/multer')
 
 const ProductController = require('./app/controllers/ProductController')
+const HomeController = require('./app/controllers/HomeController')
 
 // Rotas
-routes.get('/', function(req, res) {  // 02
-    // nessa rota oque muda é o "redirect"
-    return res.render("layout.njk") 
-})
+routes.get('/', HomeController.index)
 
 routes.get('/products/create', ProductController.create)
 routes.get('/products/:id', ProductController.show)
@@ -19,23 +17,13 @@ routes.put('/products', multer.array("photos", 6), ProductController.put)
 routes.delete('/products', ProductController.delete)
 
 
-
+// Redireciona para create
 // Alias
-routes.get('/ads/create', function(req, res) { 
+routes.get('/ads/create', function(req, res) {  
     return res.redirect("/products/create") 
 })
-
-
-
 
 module.exports = routes
 
 
 
-// HTTP VERBS
-// GET: Recerber RESOURCE
-//POST: Criar ou Salvar criar um novo RESOURCE com dados enviados
-//PUT: Atualizar RESOURCE
-//DELETE: deletar RESOURCE
-
-// aqui o module exporta as routes

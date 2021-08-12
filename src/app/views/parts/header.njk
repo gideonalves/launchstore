@@ -1,6 +1,3 @@
-{# search = procurar
-   ads = publicidade
- #}
 <header>
 
     <div class="container">
@@ -11,7 +8,7 @@
             </div>
         </a>
 
-        <form class="search" method="GET" action="/products/search">
+        <form class="search" method="get" action="/products/search">
             <input 
                 type="text" 
                 name="filter" 
@@ -26,8 +23,8 @@
             <ul>
                 <li>
                     <a href="/ads/create">
-                    <i class="material-icons">add</i>
-                    Novo Anúncio
+                        <i class="material-icons">add</i>
+                        Novo Anúncio
                     </a>
                 </li>
                 <li>
@@ -38,5 +35,6 @@
                 </li>
             </ul>
         </nav>
+    
     </div>
 </header>

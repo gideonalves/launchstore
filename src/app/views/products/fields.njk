@@ -3,11 +3,10 @@
     <div>
         <select name="category_id">
             {% for category in categories %}
-            <option value="{{category.id}}"{% if product.category_id == category.id %} selected {% endif %}>
-                {{category.name}}
-            </option>
-        {% endfor%}
-            
+                <option value="{{category.id}}"{% if product.category_id == category.id %}selected{% endif %}>
+                    {{category.name}}
+                </option>
+            {% endfor%}            
         </select>
     </div>
 </div>
@@ -18,7 +17,7 @@
         <input 
             type="text" 
             name="name" 
-            placeholder="Digite o Título do Anúncio" 
+            placeholder="Digite o Título do Anuncio" 
             value="{{ product.name }}"
         >
     </div>
@@ -27,7 +26,7 @@
 <div class="item">
     <div>Descrição</div>
     <div>
-        <textarea name="description">{{product.description}}</textarea>
+        <textarea name="description">{{ product.description }}</textarea>        
     </div>
 </div>
 
@@ -61,6 +60,7 @@
             {% endif %}
         </div>
     </div>
+    </div>
 </div>
 
 <div class="item">
@@ -80,7 +80,6 @@
 
 </div>
 
-
 <div class="item">
     <div>Quantidade</div>
     <div>
@@ -94,10 +93,10 @@
 </div>
 
 {% if (product.status == '1') or (product.status == 0) %}
-<div class="item">
-    <div>Disponivel ?</div>
-    <div>
-        <span>
+    <div class="item">
+        <div>Disponível ?</div>
+        <div>
+            <span>
             <input 
                 type="radio" 
                 name="status" 
@@ -105,9 +104,9 @@
                 {% if product.status == '1' %} 
                     checked
                 {% endif %}
-            >Sim
-        </span>
-        <span>
+            > Sim
+            </span>
+            <span>
             <input 
                 type="radio" 
                 name="status" 
@@ -115,9 +114,9 @@
                 {% if product.status == '0' %} 
                     checked
                 {% endif %}
-            >Não
-        </span>
+            > Não
+            </span>
+        </div>
     </div>
-</div>
-{% endif %}
+{% endif %}    
 

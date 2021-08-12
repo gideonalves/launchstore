@@ -1,25 +1,31 @@
 const db = require('../../config/db') // conecta com banco de dados
 
-module.exports = { // aqui vai exporta tudo para a pagina controler/instructor.js
-        create(data) {
-            //inserir dados no banco de dados
-            const query = `
-                INSERT INTO products (
-                    category_id,
-                    user_id,
-                    name,
-                    description,
-                    old_price,
-                    price,
-                    quantity,
-                    status
-                
-                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-                RETURNING id
-             `
+module.exports = {
+    all() {
+        return db.query(`
+        SELECT * FROM products ORDER BY updated_at DESC
+        `)
+    },
 
-        data.price = data.price.replace(/\D/g,"")
-        
+    create(data) {
+        //inserir dados no banco de dados
+        const query = `
+            INSERT INTO products (
+                category_id,
+                user_id,
+                name,
+                description,
+                old_price,
+                price,
+                quantity,
+                status
+            
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING id
+         `
+
+        data.price = data.price.replace(/\D/g, "")
+
         const values = [
             data.category_id,
             data.user_id || 1,
@@ -32,11 +38,11 @@ module.exports = { // aqui vai exporta tudo para a pagina controler/instructor.j
         ]
 
         return db.query(query, values)
-        
+
     },
-    // Editar
+    
     find(id) {
-        return db.query('SELECT * FROM products WHERE id = $1', [id])
+        return db.query('SELECT *FROM products WHERE id= $1', [id])
     },
 
     update(data) {
@@ -74,11 +80,8 @@ module.exports = { // aqui vai exporta tudo para a pagina controler/instructor.j
 
     files(id) {
         return db.query(`
-            SELECT * FROM 
-            files WHERE 
-            product_id = $1
-        `, [id])
+            SELECT * FROM files WHERE product_id = $1
+        `,[id])
     }
-
 
 }
