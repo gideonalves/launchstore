@@ -11,7 +11,7 @@ const Mask = {
         return new Intl.NumberFormat('pt-BR', { // formato do brasil
             style: 'currency', // 1 = 1.000
             currency: 'BRL'    // R$
-        }).format(value/100)
+        }).format(value / 100)
     }
 }
 
@@ -23,16 +23,17 @@ const PhotosUpload = {
     uploadLimit: 6, // limite de seis fotos
     files: [],
     handleFileInput(event) {
-            const { files: fileList } = event.target
-            PhotosUpload.input = event.target
-           
-            if (PhotosUpload.hasLimit(event)) return
+        const { files: fileList } = event.target
+        PhotosUpload.input = event.target
+
+        if (PhotosUpload.hasLimit(event)) {
+            PhotosUpload.updateInputFiles()
+            return
+        }
 
         Array.from(fileList).forEach(file => {
 
             PhotosUpload.files.push(file)
-
-
 
             const reader = new FileReader()
 
@@ -47,10 +48,11 @@ const PhotosUpload = {
 
             reader.readAsDataURL(file)
         })
-        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
+        PhotosUpload.updateInputFiles()
 
     },
-    
+
     hasLimit(event) {
         const { uploadLimit, input, preview } = PhotosUpload
         const { files: fileList } = input
@@ -82,22 +84,22 @@ const PhotosUpload = {
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
 
         PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
-      
+
         return dataTransfer.files
     },
 
     getContainer(image) {
-          // Cria uma <div></div>
-          const div = document.createElement('div') 
-          div.classList.add('photo')
+        // Cria uma <div></div>
+        const div = document.createElement('div')
+        div.classList.add('photo')
 
-          div.onclick = PhotosUpload.removePhoto
+        div.onclick = PhotosUpload.removePhoto
 
-          div.appendChild(image)
+        div.appendChild(image)
 
-          div.appendChild(PhotosUpload.getRemoveButton())
+        div.appendChild(PhotosUpload.getRemoveButton())
 
-          return div
+        return div
     },
 
     getRemoveButton() {
@@ -109,11 +111,14 @@ const PhotosUpload = {
 
     removePhoto(event) {
         const photoDiv = event.target.parentNode // <div class="photos">
-        const photosArray = Array.from(PhotosUpload.preview.children)
-        const index = photosArray.indexOf(photoDiv)
 
+        const newFiles = Array.from(PhotosUpload.preview.children).filter(function(file) {
+            if(file.classList.contains('photo') && !file.getAttribute('id')) return true
+        })
+        const index = newFiles.indexOf(photoDiv)
         PhotosUpload.files.splice(index, 1)
-        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
+        PhotosUpload.updateInputFiles()
 
         photoDiv.remove()
     },
@@ -122,7 +127,7 @@ const PhotosUpload = {
     removeOldPhoto(event) {
         const photoDiv = event.target.parentNode
 
-        if(photoDiv.id) {
+        if (photoDiv.id) {
             const removedFiles = document.querySelector('input[name="removed_files"]')
 
             if (removedFiles) {
@@ -131,6 +136,11 @@ const PhotosUpload = {
         }
 
         photoDiv.remove()
+    },
+
+    updateInputFiles() {
+        PhotosUpload.input.files = PhotosUpload.getAllFiles()
+
     }
 
 }
@@ -141,7 +151,7 @@ const PhotosUpload = {
 const ImageGallery = {
     highlight: document.querySelector('.gallery .highlight > img'), // seleciona a imagem grande // 01
     preview: document.querySelectorAll('.gallery-preview img'), // pega todas as imagem
-    setImage(e){
+    setImage(e) {
         const { target } = e
 
         //remove todas imagem active

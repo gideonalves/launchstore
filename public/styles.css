@@ -548,3 +548,46 @@ form .item #photos-preview img {
 
     text-decoration: line-through;
 }
+
+/* === SEARCH PAGE === */
+.search-procucts {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    margin-top: 48px;
+}
+
+.search-procucts .header {
+    margin-bottom: 48px;
+
+    font-size: 14px;
+    color: #333;
+}
+
+.search-procucts .header h2 {
+    font-size: 26px;
+    text-transform: capitalize;
+
+    margin-bottom: 8px;
+}
+
+.search-procucts nav h4 {
+    margin-bottom: 16px;
+
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.search-procucts nav ul li {
+    margin: 4px 0;
+}
+
+.search-procucts nav ul li a {
+    color: #777;
+}
+
+.search-procucts nav ul li a:hover {
+    color: black;
+    font-weight: bold;
+}
