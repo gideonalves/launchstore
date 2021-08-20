@@ -3,14 +3,14 @@
 
 {% block content %}
 
-    <section class="container form">
-        <form class="card" method="POST" action="/products" enctype="multipart/form-data">
+    <section class="user-register container form">
+        <form class="card" method="POST" action="/user/register">
             <div class="header">
-                <h3>Cadastra Produto {{productId}}</h3>
+                <h3>Registre-se</h3>
             </div>    
 
             <div class="fields">
-                {% include 'products/fields.njk' %}
+                {% include 'user/fields.njk' %}
             </div>
 
             <button class="button" type="submit">Salvar</button>
