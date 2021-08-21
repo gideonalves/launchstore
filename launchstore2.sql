@@ -39,10 +39,10 @@ CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
   "name" text NOT NULL,
   "email" text UNIQUE NOT NULL,
-  "passoword" int NOT NULL,
-  "cpf_cnpj" int UNIQUE NOT NULL,
+  "password" int NOT NULL,
+  "cpf_cnpj" text UNIQUE NOT NULL,
   "cep" text,
-  "adress" text,
+  "address" text,
   "created_at" timestamp DEFAULT (now()),
   "updated_at" timestamp DEFAULT (now())
 );

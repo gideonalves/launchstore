@@ -597,12 +597,23 @@ form .item #photos-preview img {
 .user-register.container.form {
     max-width: 500px;
 }
-
+/* 
 .form input[name="email"],
 .form input[name="password"],
 .form input[name="passwordRepeat"],
 .form input[name="cpf_cnpj"],
 .form input[name="cep"] {
     max-width: 60%;
+} */
+
+/* ================ validate errors ==================== */
+.input .error {
+    background-color: #e74c3c;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
 }
+
 

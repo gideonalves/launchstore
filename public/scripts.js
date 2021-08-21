@@ -13,7 +13,6 @@ const Mask = {
             currency: 'BRL'    // R$
         }).format(value / 100)
     },
-
     cpfCnpj(value) {
         value = value.replace(/\D/g, "") // tira tods pontos e vigula e digito e troca por vazio
 
@@ -47,7 +46,6 @@ const Mask = {
 
         return value
     }, 
-
     cep(value) {
         value = value.replace(/\D/g, "")
 
@@ -191,8 +189,6 @@ const PhotosUpload = {
 
 }
 
-
-
 // imagem 
 const ImageGallery = {
     highlight: document.querySelector('.gallery .highlight > img'), // seleciona a imagem grande // 01
@@ -230,4 +226,85 @@ const Lightbox = {
         Lightbox.target.style.bottom = "initial"
         Lightbox.closeButton.style.top = "-80px"
     }
+}
+
+
+// validação do email
+const Validade = {
+    //apply = aplique
+    apply(input, func) {
+        Validade.clearErrors(input)
+
+
+       let results =  Validade[func](input.value)
+       input.value = results.value
+
+       if(results.error)
+            Validade.displayError(input, results.error)
+
+    },
+    // Coloca uma mensagem de erro (email invalido)
+    displayError(input, error) {
+        const div = document.createElement('div') // cria uma div
+        div.classList.add('error') // coloca a class error dentro da div
+        div.innerHTML = error
+        input.parentNode.appendChild(div)
+        input.focus()
+    },
+    // Função faz limpar o input do email
+    clearErrors(input) {
+       const errorDiv = input.parentNode.querySelector(".error")
+       if (errorDiv)
+          errorDiv.remove()
+    },
+
+    isEmail(value) {
+        let error = null
+
+        const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+        if (!value.match(mailFormat))
+            error = "Email inválido"
+
+        return {
+            error,
+            value
+        }
+    },
+
+    isCpfCnpj(value) {
+        let error = null
+
+        const cleanValues = value.replace(/\D/g, "")
+
+        if (cleanValues.length > 11 && cleanValues.length !== 14) {
+            error = "CNPJ incorreto"
+        }
+        else if (cleanValues.length < 12 && cleanValues.length !== 11 ) {
+            error = "CPF incorreto"
+        }    
+
+        return {
+            error,
+            value
+        }
+    },
+
+    isCep(value) {
+        let error = null
+
+        const cleanValues = value.replace(/\D/g, "")
+
+        if (cleanValues.length !== 8) {
+            error = "CEP incorreto"
+        }
+
+
+        return {
+            error,
+            value
+        }
+
+    }
+
 }
