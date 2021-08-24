@@ -5,12 +5,13 @@ const multer = require('../app/middlewares/multer')
 const ProductController = require('../app/controllers/ProductController')
 const SearchController = require('../app/controllers/SearchController')
 
+const { onlyUsers } = require('../app/middlewares/session')
 
 // Search
 routes.get('/search', SearchController.index)
 
 // Products
-routes.get('/create', ProductController.create)
+routes.get("/create", onlyUsers, ProductController.create)
 routes.get('/:id', ProductController.show)
 routes.get('/:id/edit', ProductController.edit)
 
