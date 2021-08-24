@@ -30,8 +30,12 @@
         <input 
             type="password" 
             name="password" 
-            placeholder="Escolha uma senha segura" 
-            value="{{ user.password }}"
+            {% if not user.id %}
+                placeholder="Escolha uma senha segura" 
+            {% else %}    
+                placeholder="Digitie sua senha para atualizar seu cadastro"
+            {% endif %}     
+
         >
     </div>
 </div>

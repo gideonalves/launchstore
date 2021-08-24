@@ -3,18 +3,19 @@
 const express = require('express')                                          //
 const nunjucks = require('nunjucks') //chama o nunjucks                     //
 const routes = require("../src/routes")                                     //         
-const methodOverride = require('method-override')                           //
+const methodOverride = require('method-override')    
+const session = require('./config/session')                       //
                                                                             //
 const server = express()                                                    //
                                                                              //
 /* ========================================================================== */
 
-/* todos os arquvos use ou os miduer */
+/* todos os arquvos use ou os middlewares */
+server.use(session)
 server.use(express.urlencoded ({ extended:true })) /* essa linha e responsavel por req.body */
 server.use(express.static('public'))
 server.use(methodOverride('_method'))
 server.use(routes) // 04
-
 
 
 server.set("view engine", "njk")
