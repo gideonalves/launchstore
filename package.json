@@ -15,6 +15,7 @@
     "express-session": "^1.17.2",
     "method-override": "^3.0.0",
     "multer": "^1.4.3",
+    "nodemailer": "^6.6.3",
     "nunjucks": "^3.2.2",
     "pg": "^8.5.1"
   },

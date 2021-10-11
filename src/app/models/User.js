@@ -43,10 +43,10 @@ module.exports = {
                 passwordHash,
                 data.cpf_cnpj.replace(/\D/g, ""),
                 data.cep.replace(/\D/g, ""),
-                data.address,      
+                data.address      
             ]
         
-            const results = await db.query(query, values)
+            const results = await db.query(query,values)
             return results.rows[0].id
        
         } catch(err) {

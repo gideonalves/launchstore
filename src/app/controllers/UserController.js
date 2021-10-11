@@ -8,7 +8,8 @@ module.exports = {
     },
 
     async show(req, res) {
-        const { user } = req
+    //    aqui
+        const { user } = req 
 
         user.cpf_cnpj = formatCpfCnpj(user.cpf_cnpj)
         user.cep = formatCep(user.cep)
@@ -17,12 +18,21 @@ module.exports = {
     },
 
     async post(req, res) {
-      
-        const userId = await User.create(req.body)
+        try {
+            const userId = await User.create(req.body)
+            console.log(userId);
+            // return res.send({userId})
+            req.session.userId = userId
+            // return res.send(req.session)
+            return res.redirect('/users')    
+            
+        } catch (error) {
+            return res.send({error})
+            
+        }
 
-        req.session.userId = userId
-
-        return res.redirect('/users')    
+        
+        // return res.send("passous")
     },
 
     async update(req, res) {

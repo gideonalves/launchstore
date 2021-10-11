@@ -12,6 +12,14 @@ const server = express()                                                    //
 
 /* todos os arquvos use ou os middlewares */
 server.use(session)
+
+// variaveis global
+server.use((req, res, next) => {
+    res.locals.session = req.session
+    next()
+})
+
+
 server.use(express.urlencoded ({ extended:true })) /* essa linha e responsavel por req.body */
 server.use(express.static('public'))
 server.use(methodOverride('_method'))
