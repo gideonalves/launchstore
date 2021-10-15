@@ -84,3 +84,14 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 -- token password recovery
 ALTER TABLE	"users" ADD COLUMN reset_token text;
 ALTER TABLE	"users" ADD COLUMN reset_token_expires text;
+
+
+-- to run seeds
+DELETE FROM products;
+DELETE FROM users;
+DELETE FROM files;
+
+-- restart sequence auto_increment from tables ids
+ALTER SEQUENCE products_id_seq RESTART WITH 1;
+ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER SEQUENCE files_id_seq RESTART WITH 1;
